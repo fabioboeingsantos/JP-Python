@@ -18,3 +18,5 @@ if not online:
     print('banco de dados nao conectado.')
 else:
     print('banco de dados conectado! ')
+
+
