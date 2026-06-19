@@ -1,41 +1,34 @@
-from math import prod
 from modelos import Produto, listar_produtos
 
-
-def menu_simples():
-    print('='*30)
-    print(f'\n{"Menu de produtos ":^30}')
-    print('\n(1) - Cadastrar produto')     
-    print('(2) - listar alunos')
-    print('(0) - Sair')
-    print('\n' +'='*30)
-
-
+def exibir_menu():
+    print("========================")
+    print("MENU DE PRODUTOS")
+    print("0 - Sair")
+    print("1 - Cadastrar")
+    print("2 - Listar")
+    print("========================")
 
 def cadastrar():
-    nome = input('Digite seu nome: ')
-    preco = float('Digite o preco: ')
-    categoria = input('Digite a categoria: ')
+    nome = input("Digite o nome: ")
+    preco = float(input("Digite o preço:"))
+    categoria = input("Digite a categoria: ")
 
     produto = Produto(nome, preco, categoria)
     produto.salvar()
 
-def listar():
+def mostrar():
     for produto in listar_produtos():
         produto.exibir()
+
 while True:
-    menu_simples()
-    Opcao = input('Digite sua opcao: ')
+    exibir_menu()
+    opcao = input("Digite uma opção: ")
 
-    if Opcao == '0':
+    if opcao == "0":
         break
-
-    elif Opcao == '1':
-      cadastrar()
-    
-    elif Opcao == '2':
-        listar()      
-
-    
+    elif opcao == "1":
+        cadastrar()
+    elif opcao == "2":
+        mostrar()
     else:
-        print('Opcao invalida')
+        print("Opção inválida! Tente novamente.")

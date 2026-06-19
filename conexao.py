@@ -14,6 +14,7 @@ def conectar():
 
 conexao = conectar()
 online = conexao.is_connected()
+
 if not online:
     print('banco de dados nao conectado.')
 else:
