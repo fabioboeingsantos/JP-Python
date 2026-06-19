@@ -34,8 +34,7 @@ while True:
       cadastrar()
     
     elif Opcao == '2':
-
-       
+        listar()      
 
     
     else:
