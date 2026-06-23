@@ -1,27 +1,36 @@
-from modelos import Produto, listar_produtos
+from modelos import Alunos
 
-def exibir_menu():
-    print("========================")
-    print("MENU DE PRODUTOS")
-    print("0 - Sair")
-    print("1 - Cadastrar")
-    print("2 - Listar")
-    print("========================")
+def menu_simples():
+    print('='*30)
+    print(f'\n{"Cadastro de alunos":^30}')
+    print('\n(1) - Cadastrar Aluno')   
+    print('(2) - listar alunos')
+    print('(3) - Buscar aluno por ID')
+    print('(0) - Sair')
+    print('\n' +'='*30)
 
 def cadastrar():
-    nome = input("Digite o nome: ")
-    preco = float(input("Digite o preço:"))
-    categoria = input("Digite a categoria: ")
+    sql = "INSERT INTO alunos (nome, nota) VALUES (%s, %s)"
+    input("Digite o nome do aluno: ")
+    nota = input("Digite a nota do aluno: ")
+    conexao = conectar()
+    cursor = conexao.cursor()
+    cursor.execute(sql, (nome, nota))
+    conexao.commit()
+    conexao.close()
 
-    produto = Produto(nome, preco, categoria)
-    produto.salvar()
 
-def mostrar():
-    for produto in listar_produtos():
+def listar_alunos():
+    for produto in listar_alunos():
         produto.exibir()
 
+def buscar_aluno():
+    id = int(input("Digite o ID do aluno: "))
+    
+    
+
 while True:
-    exibir_menu()
+    menu_simples()
     opcao = input("Digite uma opção: ")
 
     if opcao == "0":
@@ -29,6 +38,9 @@ while True:
     elif opcao == "1":
         cadastrar()
     elif opcao == "2":
-        mostrar()
+        listar_alunos()
+    
+        
+
     else:
         print("Opção inválida! Tente novamente.")
